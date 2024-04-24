@@ -23,4 +23,8 @@ def test_verify_error_message():
     click_event = driver.find_element(By.XPATH,"//button[@id='frm-btn']")
     click_event.click()
     time.sleep(25)
+    validate_trial_error = driver.find_element(By.XPATH,"//h5[@class ='id-card-title']")
+    assert validate_trial_error.text == "Your free trial has expired"
+    allure.attach(driver.get_screenshot_as_png(), name="Screenshot3", attachment_type=AttachmentType.PNG)
+    time.sleep(10)
     driver.quit()
